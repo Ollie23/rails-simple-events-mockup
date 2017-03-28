@@ -5,7 +5,7 @@
 
 <ul>
   <%= @bar.name %>
-  <%= @bar.events.each do |event| %>
+  <% @bar.events.each do |event| %>
     <li><%= event.title %> on the <%= event.date %> July </li>
   <% end %>
 </ul>
