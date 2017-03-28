@@ -1,2 +1,11 @@
 <h1>Bars#show</h1>
 <p>Find me in app/views/bars/show.html.erb</p>
+
+
+
+<ul>
+  <%= @bar.name %>
+  <%= @bar.events.each do |event| %>
+    <li><%= event.title %> on the <%= event.date %> July </li>
+  <% end %>
+</ul>

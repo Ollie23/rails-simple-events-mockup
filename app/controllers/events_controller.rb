@@ -14,6 +14,7 @@ class EventsController < ApplicationController
 
   def create
     @event = @bar.events.build(event_params)
+    @event.bar = @bar
     if @event.save
       redirect_to bar_path(@bar)
     else
@@ -27,7 +28,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:cocktail).permit(:title, :date)
+    params.require(:event).permit(:title, :date)
   end
 
   def set_bar
