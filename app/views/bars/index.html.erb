@@ -1,10 +1,15 @@
 <div class = "text-center">
-<h1>Bars</h1>
+  <h1>Bars</h1>
   <% @bars.each do |bar| %>
-    <%= link_to bar_path(bar) do %>
-    <hr>
-      <h2><%=bar.name.capitalize%></h2>
-    <hr>
-    <% end %>
+  <%= link_to bar_path(bar) do %>
+  <hr>
+  <h2><%=bar.name.capitalize%></h2>
+  <hr>
+  <% end %>
   <% end %>
 </div>
+
+
+<% if current_user && current_user.bar_owner? %>
+  <%= link_to 'See ma bar', bar_path(current_user.bars.first), class: 'btn btn-primary'  %>
+<% end %>
