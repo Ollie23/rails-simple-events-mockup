@@ -1,2 +1,5 @@
-<h1>Bars#new</h1>
-<p>Find me in app/views/bars/new.html.erb</p>
+<%= simple_form_for @bar do |f| %>
+  <%= f.input :name %>
+  <%= f.input :location%>
+  <%= f.submit "Create", class: "btn btn-primary" %>
+<% end %>
