@@ -1,2 +1,8 @@
 <h1>Events#new</h1>
 <p>Find me in app/views/events/new.html.erb</p>
+
+<%= simple_form_for [@bar, @event] do |f| %>
+<%= f.input :title %>
+<%= f.input :date %>
+<%= f.submit "Create Event" , class: "btn btn-primary" %>
+<% end %>
