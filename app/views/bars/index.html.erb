@@ -1,2 +1,3 @@
-<h1>Bars#index</h1>
-<p>Find me in app/views/bars/index.html.erb</p>
+<% @bars.each do |bar| %>
+  <h2><%=bar.name%></h2>
+<% end %>

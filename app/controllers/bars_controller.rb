@@ -3,17 +3,18 @@ class BarsController < ApplicationController
     @bars = Bar.all
   end
 
+  def new
+    @bar = Bar.new
+  end
+
   def create
     @bar = Bar.new(bar_params)
+    @bar.user = current_user
     if @bar.save
-      redirect_to bar_path(@bar)
+      redirect_to bars_path
     else
       render :new
     end
-  end
-
-  def new
-    @bar = Bar.new
   end
 
   def show
@@ -23,7 +24,7 @@ class BarsController < ApplicationController
   private
 
   def bar_params
-    params.require(:bar).permit(:name, :location)
+    params.require(:bar).permit(:name, :location, :user_id)
   end
 end
 
