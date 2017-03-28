@@ -1,5 +1,6 @@
 class BarsController < ApplicationController
   def index
+    @bars = current_user.bars
     @bars = Bar.all
   end
 
@@ -18,7 +19,12 @@ class BarsController < ApplicationController
   end
 
   def show
-    @bar = Bar.find(params[:id])
+    if current_user.owns_bar?(Bar.find(params[:id]))
+      @bar = Bar.find(params[:id])
+    else
+      redirect_to bars_path
+      flash[:notice] = "you cant acces this page"
+    end
   end
 
   private
@@ -27,4 +33,6 @@ class BarsController < ApplicationController
     params.require(:bar).permit(:name, :location, :user_id)
   end
 end
+
+
 
