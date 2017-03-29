@@ -2,14 +2,16 @@
   <h1>Bars</h1>
   <% @bars.each do |bar| %>
   <%= link_to bar_path(bar) do %>
-  <hr>
   <h2><%=bar.name.capitalize%></h2>
-  <hr>
   <% end %>
   <% end %>
 </div>
 
-
-<% if current_user && current_user.bar_owner? %>
-  <%= link_to 'See ma bar', bar_path(current_user.bars.first), class: 'btn btn-primary'  %>
+<% if current_user%>
+  <%= link_to 'Create Bar', new_bar_path(@bar), class: 'btn btn-primary'  %>
 <% end %>
+
+<!-- # <% if current_user && current_user.bar_owner? %>
+#   <%= link_to 'See ma bar', bar_path(current_user.bars.first), class: 'btn btn-primary'  %>
+# <% end %>
+ -->
