@@ -15,6 +15,7 @@ class EventsController < ApplicationController
   def create
     @event = @bar.events.build(event_params)
     @event.bar = @bar
+
     if @event.save
       redirect_to bar_path(@bar)
     else
