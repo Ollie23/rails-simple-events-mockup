@@ -1,6 +1,6 @@
 class BarsController < ApplicationController
   def index
-    @bars = current_user.bars
+    # @bars = current_user.bars
     @bars = Bar.all
   end
 
@@ -19,12 +19,12 @@ class BarsController < ApplicationController
   end
 
   def show
-    if current_user.owns_bar?(Bar.find(params[:id]))
+    # if current_user.owns_bar?(Bar.find(params[:id]))
       @bar = Bar.find(params[:id])
-    else
-      redirect_to bars_path
-      flash[:notice] = "you cant acces this page"
-    end
+    # else
+    #   redirect_to bars_path
+    #   flash[:notice] = "you cant acces this page"
+    # end
   end
 
   private
