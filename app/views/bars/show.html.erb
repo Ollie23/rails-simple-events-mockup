@@ -1,16 +1,12 @@
-
-<p>Find me in app/views/bars/show.html.erb</p>
-
-
 <div class= "text-center">
-<h2><%= @bar.name.capitalize %></h2>
+<h2><%= @bar.name %></h2>
 <h2><%= @bar.location %></h2>
 </div>
 
 <ul>
-  <%= @bar.name %>
+  <h1>Events</h1>
   <% @bar.events.each do |event| %>
-    <li><%= event.title %> on the <%= event.date %> July </li>
+    <li><%= event.title %> on the <%= event.date %></li>
   <% end %>
 </ul>
 
