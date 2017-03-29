@@ -1,9 +1,9 @@
 <div class = "text-center">
-  <h1>Bars</h1>
+  <h1>Venues</h1>
   <% @bars.each do |bar| %>
-  <%= link_to bar_path(bar) do %>
-  <h2><%=bar.name.capitalize%></h2>
-  <% end %>
+    <%= link_to bar_path(bar) do %>
+      <h2><%=bar.name%></h2>
+    <% end %>
   <% end %>
 </div>
 
