@@ -3,27 +3,20 @@
 <h2><%= @bar.location %></h2>
 </div>
 
-<div class="container">
-<div class="row">
-<div class="col-xs-4 col-xs-offset-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4">
+        <div id="map" class="mappp" style="width: 500px; height: 300px;"></div>
+        <h1>Events</h1>
+        <% @bar.events.each do |event| %>
+          <p><%= event.title %> on the <%= event.date %></p>
 
-<div id="map" class="mappp" style="width: 500px; height: 300px;"></div>
-
-
-  <h1>Events</h1>
-  <% @bar.events.each do |event| %>
-    <p><%= event.title %> on the <%= event.date %></p>
-  <% end %>
-
-
-<% if current_user && current_user.owns_bar?(@bar) %>
-  <%= link_to 'Add Events', new_bar_event_path(@bar), class: 'btn btn-primary'%>
-<% end %>
-
-
-</div>
-
-</div>
+        <% end %>
+      <% if current_user && current_user.owns_bar?(@bar) %>
+        <%= link_to 'Add Events', new_bar_event_path(@bar), class: 'btn btn-primary'%>
+      <% end %>
+    </div>
+  </div>
 </div>
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
