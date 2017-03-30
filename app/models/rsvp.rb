@@ -1,4 +1,5 @@
 class Rsvp < ApplicationRecord
-  has_many :users
-  has_many :events
+  belongs_to :user
+  belongs_to :event
+  validates :event, uniqueness: {scope: :user}
 end
