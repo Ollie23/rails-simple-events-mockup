@@ -49,14 +49,10 @@
         <% @bar.events.each do |event| %>
           <p><%= event.title %> on the <%= event.date %></p>
         <% end %>
-      <% if current_user && current_user.owns_bar?(@bar) %>
-        <%= link_to 'Add Events', new_bar_event_path(@bar), class: 'btn btn-primary'%>
-      <% end %>
-      <% if current_user && current_user.owns_bar?(@bar) %>
-        <%= link_to 'Edit', edit_bar_path(@bar), class: 'btn btn-primary'%>
-      <% end %>
-       <% if current_user && current_user.owns_bar?(@bar) %>
-        <%= link_to "Delete", bar_path(@bar), method: :delete %>
+        <% if current_user && current_user.owns_bar?(@bar) %>
+          <%= link_to 'Add Events', new_bar_event_path(@bar), class: 'btn btn-primary'%>
+          <%= link_to 'Edit', edit_bar_path(@bar), class: 'btn btn-primary'%>
+          <%= link_to "Delete", bar_path(@bar), method: :delete, class: 'btn btn-primary'%>
       <% end %>
     </div>
   </div>
