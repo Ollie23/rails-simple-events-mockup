@@ -19,6 +19,7 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'devise'
 gem 'bootstrap-datepicker-rails'
+gem 'appsignal'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
