@@ -1,7 +1,12 @@
 <%= simple_form_for @bar do |f| %>
-  <%= f.label :name, "name" %>
   <%= f.text_field :name %>
-  <%= f.label :location, "location" %>
   <%= f.text_field :location %>
+  <%= f.text_field :description %>
+  <%= f.text_field :category %>
+  <%= f.input :o_time%>
+  <%= f.input :c_time%>
+  <%= f.input :wifi%>
+  <%= f.input :tv%>
+  <%= f.input :bathroom%>
   <%= f.submit %>
 <% end %>
