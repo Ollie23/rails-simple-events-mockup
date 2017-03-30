@@ -49,7 +49,7 @@ class BarsController < ApplicationController
   private
 
   def bar_params
-    params.require(:bar).permit(:name, :location, :user_id)
+    params.require(:bar).permit(:name, :location, :user_id, :description, :category, :o_time, :c_time, :wifi, :tv, :bathroom)
   end
 end
 
