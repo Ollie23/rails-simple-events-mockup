@@ -1,0 +1,9 @@
+
+
+<%= simple_form_for @event do |f| %>
+  <%= f.label :title, "Event Name"%>
+  <%= f.text_field :title %>
+  <%= f.label :date, "Date" %>
+  <%= f.text_field :date, class: "datepicker" %>
+  <%= f.submit "Edit Event" , class: "btn btn-primary" %>
+<% end %>

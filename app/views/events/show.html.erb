@@ -1,2 +1,17 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<h1><%= @event.bar.name %></h1>
+
+<%= @event.title %>
+<%= @event.date %>
+
+
+<% unless @event.is_attending?(current_user) %>
+  <%= button_to 'Attend', attend_event_path(@event), method: :post %>
+<% else %>
+  <h3>You're attending!</h3>
+<% end %>
+
+<h3> Users Attending: <%= @event.rsvps.count %> </h3>
+
+<% if current_user && current_user.owns_bar?(@event.bar) %>
+  <%= link_to "Update Event", edit_event_path(@event), class: "btn btn-primary" %>
+<% end %>
