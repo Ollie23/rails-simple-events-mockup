@@ -3,15 +3,42 @@
 <h2><%= @bar.location %></h2>
 </div>
 
-<ul>
+<div class="container">
+<div class="row">
+<div class="col-xs-4 col-xs-offset-4">
+
+<div id="map" class="mappp" style="width: 500px; height: 300px;"></div>
+
+
   <h1>Events</h1>
   <% @bar.events.each do |event| %>
-    <li><%= event.title %> on the <%= event.date %></li>
+    <p><%= event.title %> on the <%= event.date %></p>
   <% end %>
-</ul>
+
 
 <% if current_user && current_user.owns_bar?(@bar) %>
   <%= link_to 'Add Events', new_bar_event_path(@bar), class: 'btn btn-primary'%>
 <% end %>
 
 
+</div>
+
+</div>
+</div>
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+<% end %>
