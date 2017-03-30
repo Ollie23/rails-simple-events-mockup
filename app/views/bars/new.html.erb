@@ -1,5 +1,19 @@
-<%= simple_form_for @bar do |f| %>
-  <%= f.input :name %>
-  <%= f.input :location%>
-  <%= f.submit "Create", class: "btn btn-primary" %>
-<% end %>
+<h1 class="text-center"> Create Bar</h1>
+ <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4">
+          <%= simple_form_for @bar do |f| %>
+            <%= f.input :name %>
+            <%= f.input :location%>
+            <%= f.input :description%>
+            <%= f.input :category%>
+            <%= f.input :o_time%>
+            <%= f.input :c_time%>
+            <%= f.input :wifi%>
+            <%= f.input :tv%>
+            <%= f.input :bathroom%>
+            <%= f.submit "Create", class: "btn btn-primary" %>
+          <% end %>
+    </div>
+  </div>
+</div>
