@@ -6,7 +6,9 @@
 <ul>
   <h1>Events</h1>
   <% @bar.events.each do |event| %>
-    <li><%= event.title %> : <%= event.date %></li>
+    <%= link_to event_path(event) do %>
+      <li><%= event.title %> : <%= event.date %></li>
+    <% end  %>
   <% end %>
 </ul>
 
