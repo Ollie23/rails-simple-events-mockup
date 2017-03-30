@@ -6,7 +6,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-4 col-xs-offset-4">
-        <div id="map" class="mappp" style="width: 500px; height: 300px;"></div>
+        <div id="map" class="mappp" style="width: 350px; height: 300px;"></div>
         <h1>Events</h1>
         <% @bar.events.each do |event| %>
           <p><%= event.title %> on the <%= event.date %></p>
@@ -15,6 +15,12 @@
       <% if current_user && current_user.owns_bar?(@bar) %>
         <%= link_to 'Add Events', new_bar_event_path(@bar), class: 'btn btn-primary'%>
       <% end %>
+      <% if current_user && current_user.owns_bar?(@bar) %>
+        <%= link_to 'Edit', edit_bar_path(@bar), class: 'btn btn-primary'%>
+      <% end %>
+       <% if current_user && current_user.owns_bar?(@bar) %>
+        <%= link_to "Delete", bar_path(@bar), method: :delete %>
+      <% end %>
     </div>
   </div>
 </div>
@@ -22,15 +28,11 @@
   <%= javascript_tag do %>
     $(document).ready(function() {
       var handler = Gmaps.build('Google');
+      var pos = <%= raw @hash.to_json %>;
       handler.buildMap({ internal: { id: 'map' } }, function() {
         markers = handler.addMarkers(<%= raw @hash.to_json %>);
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
       });
     });
   <% end %>

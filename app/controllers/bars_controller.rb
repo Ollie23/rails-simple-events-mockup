@@ -24,18 +24,27 @@ class BarsController < ApplicationController
       @bar_coordinates = { lat: @bar.latitude, lng: @bar.longitude }
       @bars = Bar.where.not(latitude: nil, longitude: nil)
 
-      @hash = Gmaps4rails.build_markers(@bars) do |bar, marker|
-      marker.lat bar.latitude
-      marker.lng bar.longitude
-      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
-    end
+      @hash = Gmaps4rails.build_markers(@bar) do |bar, marker|
+        marker.lat bar.latitude
+        marker.lng bar.longitude
+        # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+      end
   end
 
-    # else
-    #   redirect_to bars_path
-    #   flash[:notice] = "you cant acces this page"
-    # end
+   def edit
+    @bar = Bar.find(params[:id])
+  end
 
+  def update
+    @bar = Bar.find(params[:id])
+    @bar.update(bar_params)
+    redirect_to bars_path(@bar)
+  end
+
+  def destroy
+    @bar = Bar.find(params[:id]).destroy
+    redirect_to bars_path
+  end
 
   private
 
