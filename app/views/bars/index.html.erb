@@ -1,16 +1,33 @@
 <div class = "text-center">
   <h1>Venues</h1>
-  <% @bars.each do |bar| %>
-    <%= link_to bar_path(bar) do %>
-      <h2><%=bar.name%></h2>
-    <% end %>
-  <% end %>
 </div>
 
-<% if current_user%>
-  <%= link_to 'Create Bar', new_bar_path(@bar), class: 'btn btn-primary'  %>
-<% end %>
+<div class="container padded">
+  <div class="row">
+    <% @bars.each do |bar| %>
+      <div class="col-xs-4">
+        <div class="card text-center" style="background-image: linear-gradient(-225deg, rgba(0,20,80,0.6) 0%, rgba(0,10,100,0.3) 50%), url('<%= bar.photo.present? ? cl_image_path(bar.photo) : cl_image_path('https://unsplash.it/500/400') %>');">
+          <%= link_to bar_path(bar) do %>
+            <div class="card-name">
+              <h1><%=bar.name%></h1>
+            </div>
+            <div class="card-location">
+                <h3><%=bar.location%></h3>
+            </div>
+          </div>
+              </div>
 
+        <% end %>
+      <% end %>
+  </div>
+</div>
+
+
+<div class="padded text-center">
+  <% if current_user%>
+    <%= link_to 'Create Bar', new_bar_path(@bar), class: 'btn btn-primary'  %>
+  <% end %>
+</div>
 <!-- # <% if current_user && current_user.bar_owner? %>
 #   <%= link_to 'See ma bar', bar_path(current_user.bars.first), class: 'btn btn-primary'  %>
 # <% end %>
