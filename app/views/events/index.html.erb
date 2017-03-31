@@ -3,18 +3,15 @@
     <h1 class = "text-center">All Events</h1>
     <div class = "container">
       <div class = "row">
-      <% @sorted_events = @events.sort_by &:date %>
+        <% @sorted_events = @events.sort_by &:date %>
         <% @sorted_events.each do |x|%>
-        <div class="col-xs-6">
-          <div class="card text-center">
-            <div class="card-body small-padded">
+          <%= link_to event_path(x) do %>
+            <div class="col-xs-6 small-padded event-link">
               <%= x.bar.name %> - "<%= x.title %>"
               <%= x.date %>
             </div>
-          </div>
-        </div>
+          <% end %>
         <% end %>
-
       </div>
     </div>
   </div>

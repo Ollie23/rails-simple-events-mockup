@@ -14,4 +14,7 @@ class Event < ApplicationRecord
     self.users.pluck(:id).include?(user.id) ? true : false
   end
 
+  def has_photo?
+    self.photo = nil
+  end
 end
