@@ -20,6 +20,8 @@ gem 'autoprefixer-rails'
 gem 'devise'
 gem 'bootstrap-datepicker-rails'
 gem 'appsignal'
+gem 'cloudinary'
+gem 'carrierwave', '~> 0.11.2'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
@@ -35,5 +37,6 @@ group :development, :test do
   gem 'listen', '~> 3.0.5'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+
 
 

@@ -45,7 +45,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :date)
+    params.require(:event).permit(:title, :date, :photo, :photo_cache)
   end
 
   def set_bar

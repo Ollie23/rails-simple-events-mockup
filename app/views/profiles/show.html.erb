@@ -1,7 +1,9 @@
 <div class= "text-center">
-  <h2><%= @profile.name %></h2>
-  <h2><%= @profile.birthday %></h2>
-  <h2><%= @profile.name %>'s Events</h2>
+
+ <%= cl_image_tag @profile.photo, height: 300, width: 400, crop: :fill %>
+<h2><%= @profile.name %></h2>
+<h2><%= @profile.birthday %></h2>
+<h3>Events</h3>
   <ul>
     <% current_user.events.each do |event| %>
       <%= link_to event_path(event) do %>
@@ -9,4 +11,3 @@
     <% end %>
   <% end%>
   </ul>
-</div>

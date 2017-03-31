@@ -6,12 +6,16 @@
 <div class="bar-info">
   <div class="container small-padded">
     <div class="row">
+
       <div class="col-xs-12 col-md-4">
         <h3><%=@bar.description%></h3>
-      </div>
-      <div class="col-xs-12 col-md-4">
-        <img class= "bar-image" src="http://lorempixel.com/350/250/nightlife/" alt="">
-      </div>
+    </div>
+    <div class="col-xs-6">
+      <%= cl_image_tag @bar.photo, height: 300, width: 400, crop: :fill %>
+    </div>
+
+
+      
       <div class="col-xs-12 col-md-4">
         <p><%= @bar.category %></p>
         <p>Open:  <%= @bar.o_time %></p>
@@ -43,7 +47,6 @@
     </div>
   </div>
 </div>
-
   <div class="container padded">
     <div class="row">
       <div class="col-xs-4 col-xs-offset-4">
