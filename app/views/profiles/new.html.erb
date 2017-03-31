@@ -1,0 +1,13 @@
+<h1 class="text-center">Create Profile</h1>
+ <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4">
+          <%= simple_form_for @profile do |f| %>
+            <%= f.input :name %>
+            <%= f.input :last_name%>
+            <%= f.input :birthday%>
+            <%= f.submit "Create", class: "btn btn-primary" %>
+          <% end %>
+    </div>
+  </div>
+</div>

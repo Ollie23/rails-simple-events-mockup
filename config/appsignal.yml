@@ -4,6 +4,7 @@ default: &defaults
   push_api_key: "fe2b93bc-37cf-4ee0-a7e3-f3f71aeeea86"
 
   # Your app's name
+
   name: "Drink BnBr"
 
   # Actions that should not be monitored by AppSignal

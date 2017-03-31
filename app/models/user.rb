@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :events, through: :rsvps
   has_many :rsvps
   has_many :bars
+  has_one :profile
 
 
   def bar_owner?
@@ -15,4 +16,6 @@ class User < ApplicationRecord
   def owns_bar?(bar)
     self.bars.include?(bar) ? true : false
   end
+
+
 end
