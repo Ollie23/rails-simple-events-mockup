@@ -1,38 +1,43 @@
 <div class= "text-center">
 <h2><%= @bar.name %></h2>
 <h2><%= @bar.location %></h2>
-<p><%= @bar.category %></p>
-<h2><%=@bar.description%></h2>
 </div>
 
 <div class="bar-info">
-  <div class="container padded">
+  <div class="container small-padded">
     <div class="row">
-      <div class="col-xs-3 col-xs-offset-8">
-      <p>Open:  <%= @bar.o_time %></p>
-      <p>Close: <%= @bar.c_time %></p>
-      <% if @bar.wifi == true%>
-        <i class="fa fa-wifi" aria-hidden="true"></i>
-      <% end %>
-      <div>
-        <ul class="list-inline">
-          <li>
-            <i class="fa fa-television" aria-hidden="true"></i>
-          </li>
-          <li>
-            <p><%= @bar.tv %></p>
-          </li>
-        </ul>
+      <div class="col-xs-12 col-md-4">
+        <h3><%=@bar.description%></h3>
       </div>
-      <div >
+      <div class="col-xs-12 col-md-4">
+        <img class= "bar-image" src="http://lorempixel.com/350/250/nightlife/" alt="">
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <p><%= @bar.category %></p>
+        <p>Open:  <%= @bar.o_time %></p>
+        <p>Close: <%= @bar.c_time %></p>
+        <% if @bar.wifi == true%>
+          <i class="fa fa-wifi" aria-hidden="true"></i>
+        <% end %>
+        <div>
+          <ul class="list-inline">
+            <li>
+              <i class="fa fa-television" aria-hidden="true"></i>
+            </li>
+            <li>
+              <p><%= @bar.tv %></p>
+            </li>
+          </ul>
+        </div>
+        <div>
         <ul class="list-inline">
           <li>
             <i class="fa fa-venus-mars" aria-hidden="true"></i>
-            </li>
-            <li>
+          </li>
+          <li>
             <p><%= @bar.bathroom %></p>
-            </li>
-          </ul>
+          </li>
+         </ul>
         </div>
       </div>
     </div>

@@ -17,5 +17,7 @@ class User < ApplicationRecord
     self.bars.include?(bar) ? true : false
   end
 
-
+  def has_profile?
+    self.profile != nil
+  end
 end

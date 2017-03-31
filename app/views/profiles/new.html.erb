@@ -5,7 +5,7 @@
           <%= simple_form_for @profile do |f| %>
             <%= f.input :name %>
             <%= f.input :last_name%>
-            <%= f.input :birthday%>
+            <%= f.text_field :birthday, class: "datepicker" %>
             <%= f.submit "Create", class: "btn btn-primary" %>
           <% end %>
     </div>

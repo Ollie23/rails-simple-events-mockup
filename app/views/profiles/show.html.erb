@@ -1,7 +1,12 @@
 <div class= "text-center">
-<h2><%= @profile.name %></h2>
-<h2><%= @profile.birthday %></h2>
-<% current_user.events.each do |event| %>
-<%= event.title %>
-<% end%>
+  <h2><%= @profile.name %></h2>
+  <h2><%= @profile.birthday %></h2>
+  <h2><%= @profile.name %>'s Events</h2>
+  <ul>
+    <% current_user.events.each do |event| %>
+      <%= link_to event_path(event) do %>
+        <%= event.title %>
+    <% end %>
+  <% end%>
+  </ul>
 </div>
