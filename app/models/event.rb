@@ -4,6 +4,7 @@ class Event < ApplicationRecord
   has_many :rsvps
   validates :title, presence: true
   validates :date, presence: true
+  mount_uploader :photo, PhotoUploader
 
   def sorted
     self.order(:date)
