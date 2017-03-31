@@ -1,67 +1,60 @@
 <div class= "text-center">
-<h2><%= @bar.name %></h2>
-<h2><%= @bar.location %></h2>
+  <h1><%= @bar.name %></h1>
+  <h3><%= @bar.category %></h3>
 </div>
 
 <div class="bar-info">
   <div class="container small-padded">
     <div class="row">
 
-      <div class="col-xs-12 col-md-4">
-        <h3><%=@bar.description%></h3>
-    </div>
-    <div class="col-xs-12 col-md-4">
-      <%= cl_image_tag @bar.photo, height: 300, width: 400, crop: :fill %>
-    </div>
-
-
-
-      <div class="col-xs-12 col-md-4">
+      <div class="col-xs-12 col-md-6">
+        <%= cl_image_tag @bar.photo, height: 300, width: 400, crop: :fill, class: "bar-image" %>
+      </div>
+      <div class="col-xs-12 col-md-6">
         <p><%= @bar.category %></p>
-        <p>Open:  <%= @bar.o_time %></p>
-        <p>Close: <%= @bar.c_time %></p>
-        <% if @bar.wifi == true%>
-          <i class="fa fa-wifi" aria-hidden="true"></i>
-        <% end %>
+        <h3><%=@bar.description%></h3>
         <div>
           <ul class="list-inline">
-            <li>
-              <i class="fa fa-television" aria-hidden="true"></i>
-            </li>
-            <li>
-              <p><%= @bar.tv %></p>
-            </li>
+            <li><p><% if @bar.o_time != nil %>
+              Open: <%= @bar.o_time.strftime('%H:%M') %>
+            <% end %></p></li>
+              <li><p><% if @bar.c_time != nil %>
+              Close: <%= @bar.c_time.strftime('%H:%M') %>
+            <% end %></p></li>
+            <li><p>TV Screens: <%= @bar.tv %></p></li>
+            <li><p>Bathrooms: <%= @bar.bathroom %></p></li>
+            <li><% if @bar.wifi == true%>
+            <i class="fa fa-wifi" aria-hidden="true"></i>
+            <% end %></li>
+          <li>
+          <% if current_user && current_user.owns_bar?(@bar) %>
+          <%= link_to 'Edit Bar', edit_bar_path(@bar), class: 'btn btn-primary'%>
+          <%= link_to "Delete Bar", bar_path(@bar), method: :delete, class: 'btn btn-primary'%>
+          <% end %>
+          </li>
           </ul>
-        </div>
-        <div>
-        <ul class="list-inline">
-          <li>
-            <i class="fa fa-venus-mars" aria-hidden="true"></i>
-          </li>
-          <li>
-            <p><%= @bar.bathroom %></p>
-          </li>
-         </ul>
         </div>
       </div>
     </div>
   </div>
 </div>
-  <div class="container padded">
-    <div class="row">
-      <div class="col-xs-4 col-xs-offset-4">
-        <div id="map" class="mappp" style="width: 350px; height: 300px;"></div>
-        <h1>Events</h1>
+
+<div class="container padded text-center">
+  <div class="row">
+    <div class="col-xs-12 col-md-4 col-xs-offset-4">
+      <h2><%= @bar.location %></h2>
+      <div id="map" class="mappp" style="width: 350px; height: 300px;"></div>
+    </div>
+    <div class = "col-xs-12 col-md-4 col-xs-offset-4" >
+        <h2>Events</h2>
         <% @bar.events.each do |event| %>
           <%= link_to event_path(event) do %>
-            <p><%= event.title %> : <%= event.date %></p>
+            <p><%= event.title %></p>
           <% end %>
         <% end %>
         <% if current_user && current_user.owns_bar?(@bar) %>
           <%= link_to 'Add Events', new_bar_event_path(@bar), class: 'btn btn-primary'%>
-          <%= link_to 'Edit', edit_bar_path(@bar), class: 'btn btn-primary'%>
-          <%= link_to "Delete", bar_path(@bar), method: :delete, class: 'btn btn-primary'%>
-      <% end %>
+        <% end %>
     </div>
   </div>
 </div>
