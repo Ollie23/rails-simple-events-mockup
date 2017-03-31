@@ -1,17 +1,26 @@
-<h1><%= @event.bar.name %></h1>
-
-<%= @event.title %>
-<%= @event.date %>
-
-
-<% unless @event.is_attending?(current_user) %>
-  <%= button_to 'Attend', attend_event_path(@event), method: :post %>
-<% else %>
-  <h3>You're attending!</h3>
-<% end %>
-<%= cl_image_tag @event.photo, height: 300, width: 400, crop: :fill %>
-<h3> Users Attending: <%= @event.rsvps.count %> </h3>
-
-<% if current_user && current_user.owns_bar?(@event.bar) %>
-  <%= link_to "Update Event", edit_event_path(@event), class: "btn btn-primary" %>
-<% end %>
+<div class="container padded text-center event-spaced">
+  <div class="row">
+    <div class="col-xs-12 col-md-4">
+        <h1><%= @event.bar.name %></h1>
+        <%= @event.title %>
+        <br>
+        <%= @event.date %>
+        </div>
+           <div class=" card col-xs-12 col-md-4 text-center" style="background-image: linear-gradient(-225deg, rgba(0,20,80,0.6) 0%, rgba(0,10,100,0.3) 50%), url('<%= @event.photo.present? ? cl_image_path(@event.photo) : cl_image_path('https://unsplash.it/500/400') %>');">
+        </div>
+        <div class="col-xs-12 col-md-4">
+        <h3> Users Attending: <%= @event.rsvps.count %> </h3>
+          <ul class= "list-inline">
+        <li><% unless @event.is_attending?(current_user) %>
+          <%= button_to 'Attend', attend_event_path(@event), method: :post, class: "btn btn-primary" %>
+        <% else %>
+          <h3>You're attending!</h3>
+        <% end %> </li>
+        <li><% if current_user && current_user.owns_bar?(@event.bar) %>
+          <%= link_to "Update Event", edit_event_path(@event), class: "btn btn-primary" %>
+        <% end %>
+        </li>
+        </ul>
+    </div>
+  </div>
+</div>

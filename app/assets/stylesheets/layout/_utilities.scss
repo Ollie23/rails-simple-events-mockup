@@ -51,6 +51,19 @@
 
 }
 
+.event-link{
+  text-decoration: none;
+  color: white;
+}
+
+.event-spaced{
+  display: inline;
+}
+
+.event-link:hover{
+  color: grey;
+}
+
 .card h1{
   color: white;
 }
