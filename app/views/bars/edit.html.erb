@@ -1,7 +1,24 @@
+<div class = "text-center">
 <%= simple_form_for @bar do |f| %>
-  <%= f.label :name, "name" %>
-  <%= f.text_field :name %>
-  <%= f.label :location, "location" %>
+  <%= f.label :name, "Name" %>
+  <%= f.input_field :name %>
+  <%= f.label :location, "Address" %>
   <%= f.text_field :location %>
+  <%= f.label :description, "Description" %>
+  <%= f.text_field :description %>
+  <%= f.label :category, "Category" %>
+  <%= f.text_field :category %>
+  <br>
+  <%= f.label :opening_time, "Opening Time" %>
+  <%= f.input_field :o_time%>
+  <br>
+  <%= f.label :closing_time, "Closing Time" %>
+  <%= f.input_field :c_time%>
+  <%= f.input :wifi%>
+  <%= f.label :tv, "TV's" %>
+  <%= f.input_field :tv, as: :integer%>
+  <%= f.label :bathroom, "Bathrooms" %>
+  <%= f.input_field :bathroom%>
   <%= f.submit %>
 <% end %>
+</div>
