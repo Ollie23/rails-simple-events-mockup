@@ -16,7 +16,7 @@ class EventsController < ApplicationController
     @event = @bar.events.build(event_params)
     @event.bar = @bar
 
-    if @event.sx.ave
+    if @event.save
       redirect_to bar_path(@bar)
     else
       render :new
