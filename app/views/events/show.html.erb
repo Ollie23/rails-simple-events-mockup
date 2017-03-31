@@ -9,7 +9,7 @@
 <% else %>
   <h3>You're attending!</h3>
 <% end %>
-
+<%= cl_image_tag @event.photo, height: 300, width: 400, crop: :fill %>
 <h3> Users Attending: <%= @event.rsvps.count %> </h3>
 
 <% if current_user && current_user.owns_bar?(@event.bar) %>
