@@ -40,3 +40,56 @@
   background-image: linear-gradient(-225deg, rgba(0,20,80,0.6) 0%, rgba(0,10,100,0.3) 50%);
 }
 
+.card {
+  height: 250px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  color: white;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.card h1{
+  color: white;
+}
+
+.card-name {
+  color:white
+}
+.card-location{
+  color:white;
+}
+.card-description {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+.card-description h2 {
+  font-size: 22px;
+}
+.card-description p {
+  font-size: 15px;
+}
+.card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index:2;
+  background: black;
+  opacity: 0;
+}
+.card-link:hover{
+  opacity: 0.1;
+  text-style: none;
+}
+
+
+.profile img{
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  box-shadow: 5px 5px 5px grey;
+}
