@@ -18,7 +18,7 @@
       <% if current_user.profile == nil %>
         <%= link_to "Create_Profile", new_profile_path(current_user), class: "navbar-wagon-item navbar-wagon-link"%>
       <% else %>
-        <%= link_to "Profile"" ""page", profile_path(current_user.profile), class: "navbar-wagon-item navbar-wagon-link"%>
+        <%= link_to "My Profile", profile_path(current_user.profile), class: "navbar-wagon-item navbar-wagon-link"%>
       <% end %>
     <% end %>
 
@@ -37,7 +37,7 @@
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <%= image_tag (current_user.profile.photo), class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
               <li>
               <% if current_user.has_profile? %>
