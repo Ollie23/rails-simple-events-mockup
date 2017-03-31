@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170330143641) do
+ActiveRecord::Schema.define(version: 20170330154938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,16 @@ ActiveRecord::Schema.define(version: 20170330143641) do
     t.index ["bar_id"], name: "index_events_on_bar_id", using: :btree
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.string   "name"
+    t.string   "last_name"
+    t.date     "birthday"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
+  end
+
   create_table "rsvps", force: :cascade do |t|
     t.string   "status"
     t.datetime "created_at", null: false
@@ -71,6 +81,7 @@ ActiveRecord::Schema.define(version: 20170330143641) do
 
   add_foreign_key "bars", "users"
   add_foreign_key "events", "bars"
+  add_foreign_key "profiles", "users"
   add_foreign_key "rsvps", "events"
   add_foreign_key "rsvps", "users"
 end

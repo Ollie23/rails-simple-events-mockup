@@ -1,0 +1,16 @@
+<h1 class="text-center">Profile Edit</h1>
+ <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4">
+      <%= simple_form_for @profile do |f| %>
+            <%= f.label :name, "name" %>
+            <%= f.text_field :name %>
+            <%= f.label :last_name, "last_name" %>
+            <%= f.text_field :last_name %>
+            <%= f.label :birthday, "birthday" %>
+            <%= f.text_field :birthday %>
+            <%= f.submit %>
+        <% end %>
+    </div>
+  </div>
+</div>

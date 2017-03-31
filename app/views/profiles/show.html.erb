@@ -1,0 +1,7 @@
+<div class= "text-center">
+<h2><%= @profile.name %></h2>
+<h2><%= @profile.birthday %></h2>
+<% current_user.events.each do |event| %>
+<%= event.title %>
+<% end%>
+</div>
