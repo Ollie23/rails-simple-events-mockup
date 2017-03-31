@@ -1,9 +1,13 @@
 <div class= "text-center">
-<%= cl_image_tag @profile.photo, height: 300, width: 400, crop: :fill %>
+
+ <%= cl_image_tag @profile.photo, height: 300, width: 400, crop: :fill %>
 <h2><%= @profile.name %></h2>
 <h2><%= @profile.birthday %></h2>
 <h3>Events</h3>
-<% current_user.events.each do |event| %>
-<%= event.title %>
-<% end%>
-</div>
+  <ul>
+    <% current_user.events.each do |event| %>
+      <%= link_to event_path(event) do %>
+        <%= event.title %>
+    <% end %>
+  <% end%>
+  </ul>
